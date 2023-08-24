@@ -1,16 +1,19 @@
-
 # import azure.functions as func
+
 import os
 import re  
 import logging
 import json
 import jsonschema
-from chunker.text_chunker import TextChunker
-from chunker.chunk_metadata_helper import ChunkEmbeddingHelper
+from EmbeddingGenerator.chunker.text_chunker import TextChunker
+from EmbeddingGenerator.chunker.chunk_metadata_helper import ChunkEmbeddingHelper
 import semantic_kernel as sk
 from semantic_kernel.connectors.ai.open_ai import OpenAITextCompletion, AzureTextCompletion
 
+# local utils and shortcuts
+from utils import *
 
+# removes timings and empty strings from vtt files
 def cleanUpVTT(filename):
     output = filename + '.cleaned.txt'  
     
@@ -45,37 +48,23 @@ def cleanUpVTT(filename):
     return output
 
 
-
-def read_all(filepath):
-    with open(filepath, 'r') as f:
-        text = f.read()
-    return text 
-
-def write_file(filepath, text):
-    with open(filepath, 'w') as f:
-        f.write(text)
-
 def split_chunks(filepath):
     TEXT_CHUNKER = TextChunker()
-    CHUNK_METADATA_HELPER = ChunkEmbeddingHelper()
 
     sleep_interval_seconds = int(os.getenv("AZURE_OPENAI_EMBEDDING_SLEEP_INTERVAL_SECONDS", "1"))
     num_tokens = int(os.getenv("NUM_TOKENS", "2500"))
     min_chunk_size = int(os.getenv("MIN_CHUNK_SIZE", "10"))
     token_overlap = int(os.getenv("TOKEN_OVERLAP", "0"))
 
-    document_id = "some_document_id"
-    fieldname = "some_fieldname"
-
     text = read_all(filepath)
 
     chunking_result = TEXT_CHUNKER.chunk_content(text, file_path=filepath, num_tokens=num_tokens, min_chunk_size=min_chunk_size, token_overlap=token_overlap)
 
+    # TODO: embeddings, vector search later 
+    #CHUNK_METADATA_HELPER = ChunkEmbeddingHelper()
     #content_chunk_metadata = CHUNK_METADATA_HELPER.generate_chunks_with_embedding(document_id, [c.content for c in chunking_result.chunks], fieldname, sleep_interval_seconds)
-
     #for document_chunk, embedding_metadata in zip(chunking_result.chunks, content_chunk_metadata):
     #    document_chunk.embedding_metadata = embedding_metadata
-
 
     return chunking_result
 
