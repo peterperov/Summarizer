@@ -14,7 +14,6 @@ def exctract_audio(filename):
     audio.write_audiofile(output)
     return output
 
-
 # https://northeurope.api.cognitive.microsoft.com/sts/v1.0/issuetoken
 # 
 
