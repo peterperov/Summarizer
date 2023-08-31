@@ -7,7 +7,7 @@ from moviepy.editor import VideoFileClip
 
 from dotenv import dotenv_values
 
-def exctract_audio(filename):
+def extract_audio(filename):
     video = VideoFileClip(filename)
     audio = video.audio
     output = filename + ".audio_only.wav"
@@ -26,4 +26,4 @@ speech_region = config.get("AZURE_SPEECH_REGION", None)
 
 filename = "C:/Meetings/03DAI/FY24 Data & AI Landing Live Show - July 2023.mp4"
 
-audio_file = exctract_audio(filename)
+audio_file = extract_audio(filename)

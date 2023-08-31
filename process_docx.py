@@ -3,22 +3,10 @@
 import docx
 import re
 
-def readtxt(filename):
-    doc = docx.Document(filename)
-    fullText = []
-    for para in doc.paragraphs:
-        fullText.append(para.text)
-    return '\n'.join(fullText)
+from utils import *
 
 
-def in_array(string, array):
-    for regex in array:
-        if re.search(regex, string):
-            return True
-    return False
-
-
-filename = "C:/Meetings/05/IS Fabric Bootcamp _ Kick off.docx"
+filename = "C:/Meetings/09-Driving ADS with Azure Arc-enabled SQL Server_Feb 2023/Driving ADS with Azure Arc-enabled SQL Server_Feb 2023-en-US.docx"
 
 output = filename + ".complete.txt"
 

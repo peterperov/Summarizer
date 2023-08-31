@@ -54,6 +54,16 @@ AZURE_SPEECH_REGION="northeurope"
 
 # Running
 
+All .py files will have filename variable which specifies the input filename
+
+## audio_extractor.py
+
+Extracts audio wav from video file using ffmpeg to filename + ".audio_only.wav" in the same folder
+
+## subtitle_creator.py 
+
+
+
 
 # References 
 

@@ -7,11 +7,15 @@ import json
 import jsonschema
 from EmbeddingGenerator.chunker.text_chunker import TextChunker
 from EmbeddingGenerator.chunker.chunk_metadata_helper import ChunkEmbeddingHelper
+from EmbeddingGenerator.embedder import text_embedder
 import semantic_kernel as sk
 from semantic_kernel.connectors.ai.open_ai import OpenAITextCompletion, AzureTextCompletion
 
 # local utils and shortcuts
 from utils import *
+
+import sys
+sys.path.append('')
 
 # removes timings and empty strings from vtt files
 def cleanUpVTT(filename):
@@ -71,7 +75,7 @@ def split_chunks(filepath):
 
 #prepare chunks
 
-startingFile = "C:/Meetings/04DAI/Tech Together Arc-Enabled Infrastructure _2023-08-22.vtt"
+startingFile = "C:/Meetings/10- IAP Azure Land And Expand/IAP Azure Land & Expand Kickoff - Option 1 of 2_2023-08-16.vtt"
 
 file = cleanUpVTT(startingFile)
 chunking_result = split_chunks(file)

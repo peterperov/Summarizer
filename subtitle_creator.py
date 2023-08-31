@@ -4,8 +4,7 @@ import time
 import pickle
 from dotenv import dotenv_values
 
-file_name = "C:/Meetings/03DAI/FY24 Data & AI Landing Live Show - July 2023.mp4.audio_only.wav"
-
+filename = "C:/Meetings/03DAI/FY24 Data & AI Landing Live Show - July 2023.mp4.audio_only.wav"
 
 config = dotenv_values(".env")
 speech_api_key = config.get("AZURE_SPEECH_API_KEY", None)
@@ -14,7 +13,7 @@ speech_region = config.get("AZURE_SPEECH_REGION", None)
 # Authenticate
 speech_config = speechsdk.SpeechConfig(speech_api_key, speech_region)
 # Set up the file as the audio source
-audio_config = speechsdk.AudioConfig(filename=file_name)
+audio_config = speechsdk.AudioConfig(filename=filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config, audio_config)
 
 # Flag to end transcription
@@ -55,12 +54,12 @@ while not done:
     time.sleep(0.5)
 
 # Dump the whole transcription to a pickle file
-with open(file_name + ".transcribed_video.pickle", "wb") as f:
+with open(filename + ".transcribed_video.pickle", "wb") as f:
     pickle.dump(results, f)
     print("Transcription dumped")
 
 
-with open(file_name + ".transcribed_video.txt", "w") as f:
+with open(filename + ".transcribed_video.txt", "w") as f:
     for line in results:
         f.write(line)
         f.write("\n")

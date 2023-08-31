@@ -1,5 +1,10 @@
 import time
-from embedder.text_embedder import TextEmbedder
+
+# from embedder.text_embedder import TextEmbedder
+from ..embedder.text_embedder import TextEmbedder
+
+
+
 
 class ChunkEmbeddingHelper():
     def __init__(self):
