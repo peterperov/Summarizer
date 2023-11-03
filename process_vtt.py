@@ -75,7 +75,7 @@ def split_chunks(filepath):
 
 #prepare chunks
 
-startingFile = "C:/Meetings/10- IAP Azure Land And Expand/IAP Azure Land & Expand Kickoff - Option 1 of 2_2023-08-16.vtt"
+startingFile = "C:/Recordings/01/Azure SQL High Availability and Disaster Recovery.txt"
 
 file = cleanUpVTT(startingFile)
 chunking_result = split_chunks(file)

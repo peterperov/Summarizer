@@ -1,3 +1,5 @@
+import re
+import docx
 
 def read_all(filepath):
     with open(filepath, 'r') as f:

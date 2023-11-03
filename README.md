@@ -10,8 +10,32 @@ Currently supported inputs:
 * .vtt subtitle files 
 * .doc subtitle files from MS Teams
 
+## Description
 
-# Installation
+**audio_extractor.py** - extracts wav file from mp4, in fact from most of the video files supported by your system codecs. 
+ 
+**subtitle_creator.py** - feeds extracted wav to Azure Cognitive Speech to Text, to extract text 
+ 
+**process_vtt.py** - vtt format is a text file with timestamps. this core removes timestamps and other non-textual data, and creates a simple text file. Then it splits the text into chunks, and feeds it to ChatGPT for summary creation per chunk. 
+
+**run_me.py** - runs the whole process, from mp4 to summary.
+
+# Pre-requisites
+
+Azure Subcription 
+[Create Speech Resource](https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
+[Create OpenAI Resource](https://learn.microsoft.com/en-us/azure/ai-services/openai/how-to/create-resource?pivots=web-portal)
+
+I used following models for text extraction: text-davinci-003, text-embedding-ada-002, gpt-35-turbo
+
+
+## docs
+
+[Quickstart: Recognize and convert speech to text](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/get-started-speech-to-text?tabs=windows%2Cterminal&pivots=programming-language-csharp)
+
+
+
+# Python Installation and configuration
 
 ## libraries 
 ```
@@ -62,7 +86,7 @@ Extracts audio wav from video file using ffmpeg to filename + ".audio_only.wav" 
 
 ## subtitle_creator.py 
 
-
+Calls Azure Speech service to Speech to text conversion.
 
 
 # References 
