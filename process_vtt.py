@@ -75,7 +75,7 @@ def split_chunks(filepath):
 
 #prepare chunks
 
-startingFile = "C:/Recordings/01/Azure SQL High Availability and Disaster Recovery.txt"
+startingFile = "W:/Recordings/01/IS Fabric Bootcamp _ Session 7_ Fabric Data Warehouse and reporting (concepts and demo).vtt"
 
 file = cleanUpVTT(startingFile)
 chunking_result = split_chunks(file)
@@ -105,13 +105,20 @@ for chunk in chunking_result.chunks:
 
     prompt_text = chunk.content + "\n\n identify key points"
     # ask for summary 
-    prompt = kernel.create_semantic_function( prompt_text )
+    # , max_tokens = 1500, temperature =0
+    prompt = kernel.create_semantic_function( prompt_text)
+    # kernel.create_semantic_function()
 
     # answer = await prompt.invoke_async(context)
     # answer = await prompt.invoke_async(context)
     # answer = await kernel.run_on_vars_async(context, prompt)
     
     res = prompt()
+
+    if res.error_occurred:
+        print("ERROR")
+        print(res.last_error_description)
+
     write_file(summaryFile, res.result)
 
     all_summary += chunkFile + "\n\n" + res.result + "\n\n"

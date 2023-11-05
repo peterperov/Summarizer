@@ -9,3 +9,5 @@ openai
 azure-identity
 tenacity
 jsonschema
+semantic-kernel==0.3.8.dev0
+python-docx
