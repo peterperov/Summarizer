@@ -8,7 +8,7 @@ from subtitle_creator import subtitle_creator
 # from process_docx import process_docx
 # from process_vtt import *
 
-filename = "C:/Recordings/02/Learning Day Vector Search with Azure Cognitive Search-20230317_190209-Meeting Recording.mp4"
+filename = "w:/Recordings/02/01.Invite your customer.mp4"
 print( "Hello world")
 # extract audio file
 audio_output = extract_audio(filename)

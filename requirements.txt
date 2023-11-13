@@ -11,3 +11,4 @@ tenacity
 jsonschema
 semantic-kernel==0.3.8.dev0
 python-docx
+azure-cognitiveservices-speech

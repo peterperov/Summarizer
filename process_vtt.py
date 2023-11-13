@@ -75,7 +75,7 @@ def split_chunks(filepath):
 
 #prepare chunks
 
-startingFile = "W:/Recordings/01/IS Fabric Bootcamp _ Session 7_ Fabric Data Warehouse and reporting (concepts and demo).vtt"
+startingFile = "M:/MVPs demo Microsoft Fabric/MVPs demo Microsoft Fabric (English_ASR).srt.txt"
 
 file = cleanUpVTT(startingFile)
 chunking_result = split_chunks(file)
